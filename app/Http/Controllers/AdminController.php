@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\User;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\DB;
 
 class AdminController extends Controller
 {
@@ -11,32 +12,33 @@ class AdminController extends Controller
     {
         return view('admin.index');
     }
-    public function login()
+    public function list($name)
     {
-        return view('admin.login');
+        $data = DB::table($name)->get();
+        return view('admin.list', ['data' => $data,'name' => $name]);
     }
-    public function archive_grid()
+    public function add($name)
     {
-        return view('admin.archive_grid');
+        $data = DB::table($name)->get();
+        return view('admin.form');
     }
-    public function archive_list()
+    public function edit($name,$id)
     {
-        return view('admin.archive_list');
+        $data = DB::table($name)->get();
+        return view('admin.form');
     }
-    public function single_post()
+    public function deactivated($name,$id)
     {
-        return view('admin.single_post');
+        DB::table($name)
+            ->where('id', $id)
+            ->update(['status' => 0]);
+        return redirect()->back();
     }
-    public function video_post()
+    public function activated($name,$id)
     {
-        return view('admin.video_post');
-    }
-    public function contact()
-    {
-        return view('admin.contact');
-    }
-    public function typography()
-    {
-        return view('admin.typography');
+        DB::table($name)
+            ->where('id', $id)
+            ->update(['status' => 1]);
+        return redirect()->back();
     }
 }

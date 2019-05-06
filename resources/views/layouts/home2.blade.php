@@ -14,7 +14,7 @@
         <link rel="icon" href="img/core-img/favicon.ico">
 
         <!-- Stylesheet -->
-        <link rel="stylesheet" href="css/front/style.css">
+        <link rel="stylesheet" href="css/home/style.css">
     </head>
     <body>
         <!-- Preloader -->
@@ -158,7 +158,7 @@
                     <div class="col-12 col-sm-6 col-xl-6">
                         <div class="footer-widget mb-70">
                             <!-- Logo -->
-                            <a href="index" class="foo-logo d-block mb-4"><img src="img/front/core-img/logo2.png" alt=""></a>
+                            <a href="index" class="foo-logo d-block mb-4"><img src="img/home/core-img/logo2.png" alt=""></a>
                             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna</p>
                             <!-- Footer Newsletter Area -->
                             <div class="footer-nl-area">
@@ -204,14 +204,14 @@
                 </div>
             </div>
         </footer>
-        <script src="js/front/jquery/jquery-2.2.4.min.js"></script>
+        <script src="js/home/jquery/jquery-2.2.4.min.js"></script>
         <!-- Popper js -->
-        <script src="js/front/bootstrap/popper.min.js"></script>
+        <script src="js/home/bootstrap/popper.min.js"></script>
         <!-- Bootstrap js -->
-        <script src="js/front/bootstrap/bootstrap.min.js"></script>
+        <script src="js/home/bootstrap/bootstrap.min.js"></script>
         <!-- All Plugins js -->
-        <script src="js/front/plugins/plugins.js"></script>
+        <script src="js/home/plugins/plugins.js"></script>
         <!-- Active js -->
-        <script src="js/front/active.js"></script>
+        <script src="js/home/active.js"></script>
     </body>
 </html>
