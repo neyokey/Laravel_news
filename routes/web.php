@@ -22,12 +22,12 @@ Route::group(['prefix' => '/'], function () {
     Route::get('index', 'AdminController@index');
     Route::get('{name}', 'AdminController@list');
     Route::group(['prefix' => '/{name}/'], function () {
-    	Route::get('add', 'AdminController@add');
-    	Route::get('edit/{id}', 'AdminController@edit');
-    	Route::post('add', 'AdminController@add');
-    	Route::post('edit/{id}', 'AdminController@edit');
-    	Route::get('deactivated/{id}', 'AdminController@deactivated');
-    	Route::get('activated/{id}', 'AdminController@activated');
+        Route::get('deactivated/{id}', 'AdminController@deactivated');
+        Route::get('activated/{id}', 'AdminController@activated');
+    	Route::get('{action}', 'AdminController@add');
+    	Route::get('{action}/{id}', 'AdminController@edit');
+    	Route::post('{action}', 'AdminController@add');
+        Route::post('{action}/{id}', 'AdminController@edit');
     });
 });
 });
