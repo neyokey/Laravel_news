@@ -22,22 +22,37 @@
                 </div>
                 <div class="widget-content nopadding ">
                     <form enctype="multipart/form-data" method="post" accept-charset="utf-8" 
-                        class="form-horizontal" action="/lvtn/loainguoidung/edit/1">
-                        <div style="display:none;"><input type="hidden" name="_method" value="PUT"/>
+                        class="form-horizontal" action="<?= url("/admin/".$name.'/'.$action); ?>">
+                        @csrf
+                        <div style="display:none;"><input type="hidden" name="_method" value="POST"/>
                         </div>
                         <?php
                             foreach ($columns as  $value) {
                                 if($value == 'id' || $value == 'status')
                                     continue;
                                 else
-                                ?>
-                                    <div class="control-group ">
-                                        <label class="control-label"><?= $value ?></label>
+                                {
+                                    echo '<div class="control-group ">
+                                        <label class="control-label">'.$value.'</label>';
+                                    if($value == 'posttype_id' || $value == 'usertype_id')
+                                    {
+                                        echo '<div class="controls">
+                                            <select name='.$value.' class="span6">';
+                                        foreach ($type as  $value_type) {
+                                            echo '<option value="'.$value_type->id.'">'.$value_type->name.'</option>';
+                                        }
+                                        echo  '</select></div>';
+                                    }
+                                    else
+                                    {
+                        ?>
                                         <div class="controls">
                                             <div class="input text required"><input type="text" name="<?= $value ?>" class="span6" placeholder="<?= $value ?>" required="required" maxlength="50" id="<?= $value ?>" /></div>              
                                         </div>
                                     </div>
-                                <?php
+                        <?php
+                                    }
+                                }
                             }
                         ?>
                         

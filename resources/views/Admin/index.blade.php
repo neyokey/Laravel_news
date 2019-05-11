@@ -6,7 +6,7 @@
 <div id="content">
   <div id="content-header">
     <div id="breadcrumb"> 
-      <a href="" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a>
+      <a href="" title="Go to Home" class="tip-bottom current"><i class="icon-home"></i> Home</a>
     </div>
     <div class="container-fluid">
       <div class="row-fluid">
