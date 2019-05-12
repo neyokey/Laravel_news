@@ -14,9 +14,9 @@
 Route::group(['prefix' => '/'], function () {
 	Route::get('', 'HomeController@index');
     Route::get('index', 'HomeController@index');
-    Route::get('login', 'HomeController@login');
-    Route::get('contact', 'HomeController@contact');
-    Route::get('single_post', 'HomeController@single_post');
+    Route::match(['get', 'post'],'login', 'HomeController@login');
+    Route::match(['get', 'post'],'contact', 'HomeController@contact');
+    Route::get('post/{id}', 'HomeController@post');
     Route::group(['prefix' => 'admin/'], function () {
         
     Route::get('', 'AdminController@index');

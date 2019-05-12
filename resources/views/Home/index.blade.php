@@ -14,7 +14,7 @@
                 <div class="col-12 col-lg-6">
                     <div class="single-blog-post style-3 d-flex mb-50">
                         <div class="post-thumbnail">
-                            <img src="img/front/bg-img/16.jpg" alt="">
+                            <img src="img/home/bg-img/16.jpg" alt="">
                         </div>
                         <div class="post-content">
                             <a href="single-post.html" class="post-title">Epileptic boy's cannabis let through border</a>
@@ -31,7 +31,7 @@
                 <div class="col-12 col-lg-6">
                     <div class="single-blog-post style-3 d-flex mb-50">
                         <div class="post-thumbnail">
-                            <img src="img/front/bg-img/18.jpg" alt="">
+                            <img src="img/home/bg-img/18.jpg" alt="">
                         </div>
                         <div class="post-content">
                             <a href="single-post.html" class="post-title">Paramedics 'drilled into boat death woman'</a>
@@ -48,7 +48,7 @@
                 <div class="col-12 col-lg-6">
                     <div class="single-blog-post style-3 d-flex mb-50">
                         <div class="post-thumbnail">
-                            <img src="img/front/bg-img/19.jpg" alt="">
+                            <img src="img/home/bg-img/19.jpg" alt="">
                         </div>
                         <div class="post-content">
                             <a href="single-post.html" class="post-title">Tory vice-chairs quit over PM's Brexit plan</a>
@@ -65,7 +65,7 @@
                 <div class="col-12 col-lg-6">
                     <div class="single-blog-post style-3 d-flex mb-50">
                         <div class="post-thumbnail">
-                            <img src="img/front/bg-img/20.jpg" alt="">
+                            <img src="img/home/bg-img/20.jpg" alt="">
                         </div>
                         <div class="post-content">
                             <a href="single-post.html" class="post-title">Do This One Simple Action for an Absolutely</a>
@@ -81,7 +81,7 @@
                 <div class="col-12 col-lg-6">
                     <div class="single-blog-post style-3 d-flex mb-50">
                         <div class="post-thumbnail">
-                            <img src="img/front/bg-img/18.jpg" alt="">
+                            <img src="img/home/bg-img/18.jpg" alt="">
                         </div>
                         <div class="post-content">
                             <a href="single-post.html" class="post-title">Paramedics 'drilled into boat death woman'</a>
@@ -97,7 +97,7 @@
                 <div class="col-12 col-lg-6">
                     <div class="single-blog-post style-3 d-flex mb-50">
                         <div class="post-thumbnail">
-                            <img src="img/front/bg-img/18.jpg" alt="">
+                            <img src="img/home/bg-img/18.jpg" alt="">
                         </div>
                         <div class="post-content">
                             <a href="single-post.html" class="post-title">Paramedics 'drilled into boat death woman'</a>
@@ -113,7 +113,7 @@
                 <div class="col-12 col-lg-6">
                     <div class="single-blog-post style-3 d-flex mb-50">
                         <div class="post-thumbnail">
-                            <img src="img/front/bg-img/18.jpg" alt="">
+                            <img src="img/home/bg-img/18.jpg" alt="">
                         </div>
                         <div class="post-content">
                             <a href="single-post.html" class="post-title">Paramedics 'drilled into boat death woman'</a>
@@ -129,7 +129,7 @@
                 <div class="col-12 col-lg-6">
                     <div class="single-blog-post style-3 d-flex mb-50">
                         <div class="post-thumbnail">
-                            <img src="img/front/bg-img/18.jpg" alt="">
+                            <img src="img/home/bg-img/18.jpg" alt="">
                         </div>
                         <div class="post-content">
                             <a href="single-post.html" class="post-title">Paramedics 'drilled into boat death woman'</a>
@@ -145,7 +145,7 @@
                 <div class="col-12 col-lg-6">
                     <div class="single-blog-post style-3 d-flex mb-50">
                         <div class="post-thumbnail">
-                            <img src="img/front/bg-img/18.jpg" alt="">
+                            <img src="img/home/bg-img/18.jpg" alt="">
                         </div>
                         <div class="post-content">
                             <a href="single-post.html" class="post-title">Paramedics 'drilled into boat death woman'</a>

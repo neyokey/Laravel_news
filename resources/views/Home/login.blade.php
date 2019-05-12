@@ -13,19 +13,25 @@
                             <h4>Great to have you back!</h4>
                             <div class="line"></div>
                         </div>
-
-                        <form action="index.html" method="post">
+                        @if($errors->has('errorlogin'))
+                        <div class="alert alert-danger">
+                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                            {{$errors->first('errorlogin')}}
+                        </div>
+                        @endif
+                        <form action="<?= url('login')?>" method="post">
+                            @csrf
                             <div class="form-group">
-                                <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email or User Name">
+                                <input type="email" class="form-control" id="exampleInputEmail" placeholder="Email or User Name" name="email">
+                                @if($errors->has('email'))
+                                    <p style="color:red">{{$errors->first('email')}}</p>
+                                @endif
                             </div>
                             <div class="form-group">
-                                <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-                            </div>
-                            <div class="form-group">
-                                <div class="custom-control custom-checkbox mr-sm-2">
-                                    <input type="checkbox" class="custom-control-input" id="customControlAutosizing">
-                                    <label class="custom-control-label" for="customControlAutosizing">Remember me</label>
-                                </div>
+                                <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" name="password">
+                                @if($errors->has('password'))
+                                    <p style="color:red">{{$errors->first('password')}}</p>
+                                @endif
                             </div>
                             <button type="submit" class="btn vizew-btn w-100 mt-30">Login</button>
                         </form>

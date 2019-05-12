@@ -5,7 +5,7 @@
         <meta name="description" content="">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <title>ModAPK</title>
+        <title><?= $data['contact'][0]->brand_name ?></title>
         <link rel="icon" href="<?= url("/img/core-img/favicon.ico"); ?>">
         <link rel="stylesheet" href="<?= url("/css/home/style.css"); ?>">
     </head>
@@ -32,9 +32,9 @@
                             <div class="top-meta-data d-flex align-items-center justify-content-end">
                                 <!-- Top Social Info -->
                                 <div class="top-social-info">
-                                    <a href="#"><i class="fa fa-facebook"></i></a>
-                                    <a href="#"><i class="fa fa-instagram"></i></a>
-                                    <a href="#"><i class="fa fa-youtube-play"></i></a>
+                                    <a href="<?= $data['contact'][0]->link_fb ?>"><i class="fa fa-facebook"></i></a>
+                                    <a href="<?= $data['contact'][0]->link_ins ?>"><i class="fa fa-instagram"></i></a>
+                                    <a href="<?= $data['contact'][0]->link_yt ?>"><i class="fa fa-youtube-play"></i></a>
                                 </div>
                                 <!-- Top Search Area -->
                                 <div class="top-search-area">
@@ -60,7 +60,7 @@
                         <nav class="classy-navbar justify-content-between" id="vizewNav">
 
                             <!-- Nav brand -->
-                            <a href="index" class="nav-brand"><h2>ModAPK</h2></a>
+                            <a href="index" class="nav-brand"><h2><?= $data['contact'][0]->brand_name ?></h2></a>
 
                             <!-- Navbar Toggler -->
                             <div class="classy-navbar-toggler">
@@ -77,45 +77,26 @@
                                 <!-- Nav Start -->
                                 <div class="classynav">
                                     <ul>
-                                        <li class="active"><a href="index">Home</a></li>
-                                        <li><a href="archive_list">Archives</a></li>
-                                        <li><a href="#">Pages</a>
-                                            <ul class="dropdown">
-                                                <li><a href="index">- Home</a></li>
-                                                <li><a href="archive_list">- Archive List</a></li>
-                                                <li><a href="archive_grid">- Archive Grid</a></li>
-                                                <li><a href="single_post">- Single Post</a></li>
-                                                <li><a href="video_post">- Single Video Post</a></li>
-                                                <li><a href="contact">- Contact</a></li>
-                                                <li><a href="typography">- Typography</a></li>
-                                                <li><a href="login">- Login</a></li>
-                                            </ul>
-                                        </li>
-                                        <li><a href="#">Features</a>
-                                            <div class="megamenu">
-                                                <ul class="single-mega cn-col-4">
-                                                    <li><a href="index">- Home</a></li>
-                                                    <li><a href="archive_list">- Archive List</a></li>
-                                                    <li><a href="archive_grid">- Archive Grid</a></li>
-                                                    <li><a href="single_post">- Single Post</a></li>
-                                                    <li><a href="video_post">- Single Video Post</a></li>
-                                                    <li><a href="contact">- Contact</a></li>
-                                                    <li><a href="typography">- Typography</a></li>
-                                                    <li><a href="login">- Login</a></li>
-                                                </ul>
-                                                <ul class="single-mega cn-col-4">
-                                                    <li><a href="index">- Home</a></li>
-                                                    <li><a href="archive_list">- Archive List</a></li>
-                                                    <li><a href="archive_grid">- Archive Grid</a></li>
-                                                    <li><a href="single_post">- Single Post</a></li>
-                                                    <li><a href="video_post">- Single Video Post</a></li>
-                                                    <li><a href="contact">- Contact</a></li>
-                                                    <li><a href="typography">- Typography</a></li>
-                                                    <li><a href="login">- Login</a></li>
-                                                </ul>
-                                            </div>
-                                        </li>
-                                        <li><a href="contact">Contact</a></li>
+                                        <?php
+                                            foreach ($data['menu'] as $value) {
+                                                if($value->link == '')
+                                                {
+                                                    echo '<li><a href="#">'.$value->name.'</a><ul class="dropdown">';
+                                                    foreach ($data['submenu'] as $subvalue) {
+                                                        if($subvalue->menu_id == $value->id)
+                                                            echo '<li><a href="'.url($subvalue->name).'">-'.$subvalue->name.'</a></li>';
+                                                    }
+                                                    echo '</ul></li>';
+                                                }
+                                                else
+                                                {
+                                                    echo '<li';
+                                                    if($name == $value->name)
+                                                        echo ' class="active"';
+                                                    echo '><a href="'.url($value->link).'">'.$value->name.'</a></li>';
+                                                }
+                                            }
+                                        ?>
                                     </ul>
                                 </div>
                                 <!-- Nav End -->
@@ -147,52 +128,28 @@
         <footer class="footer-area">
             <div class="container">
                 <div class="row">
-                    <!-- Footer Widget Area -->
-                    <div class="col-12 col-sm-6 col-xl-6">
-                        <div class="footer-widget mb-70">
-                            <!-- Logo -->
-                            <a href="index" class="foo-logo d-block mb-4"><img src="img/home/core-img/logo2.png" alt=""></a>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna</p>
-                            <!-- Footer Newsletter Area -->
-                            <div class="footer-nl-area">
-                                <form action="#" method="post">
-                                    <input type="email" name="nl-email" class="form-control" id="nlEmail" placeholder="Your email">
-                                    <button type="submit"><i class="fa fa-paper-plane" aria-hidden="true"></i></button>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Footer Widget Area -->
-                    <div class="col-12 col-sm-6 col-xl-6">
+                    <div class="col-12 col-sm-12 col-xl-12">
                         <div class="footer-widget mb-70 text-right">
                             <h6 class="widget-title">Our Address</h6>
                             <!-- Contact Address -->
                             <div class="contact-address  text-right">
-                                <p>101 E 129th St, East Chicago, <br>IN 46312, US</p>
-                                <p>Phone: 001-1234-88888</p>
-                                <p>Email: info.colorlib@gmail.com</p>
+                                <p><?= $data['contact'][0]->address ?></p>
+                                <p><?= $data['contact'][0]->phone ?></p>
+                                <p>Email: <?= $data['contact'][0]->email ?></p>
                             </div>
                             <!-- Footer Social Area -->
                             <div class="footer-social-area">
-                                <a href="#" class="facebook"><i class="fa fa-facebook"></i></a>
-                                <a href="#" class="instagram"><i class="fa fa-instagram"></i></a>
-                                <a href="#" class="youtube"><i class="fa fa-youtube"></i></a>
+                                <a href="<?= $data['contact'][0]->link_fb ?>" class="facebook"><i class="fa fa-facebook"></i></a>
+                                <a href="<?= $data['contact'][0]->link_ins ?>" class="instagram"><i class="fa fa-instagram"></i></a>
+                                <a href="<?= $data['contact'][0]->link_yt ?>" class="youtube"><i class="fa fa-youtube"></i></a>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-
-            <!-- Copywrite Area -->
-            <div class="copywrite-area">
-                <div class="container">
-                    <div class="row align-items-center">
-                        <!-- Copywrite Text -->
-                        <div class="col-12 col-sm-6">
-                            <p class="copywrite-text"> Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved
-                            </p>
-                        </div>
+                <div class="row">
+                    <div class="col-12 col-sm-12">
+                        <p class="copywrite-text text-center"> Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved
+                        </p>
                     </div>
                 </div>
             </div>

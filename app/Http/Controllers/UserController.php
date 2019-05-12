@@ -24,7 +24,7 @@ class UserController extends Controller
         $name = 'user';
         if($request::post() != null)
         {
-            DB::table('user')->insert(['name' => $request::post()['name'],'email' => $request::post()['email'],'password' => $request::post()['password'],'usertype_id' => $request::post()['usertype']]);
+            DB::table('user')->insert(['name' => $request::post()['name'],'email' => $request::post()['email'],'password' => bcrypt($request::post()['password']),'usertype_id' => $request::post()['usertype']]);
             return redirect()->action('UserController@index');
         }
         $usertype = DB::table('usertype')->where('status', '1')->get();
