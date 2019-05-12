@@ -7,18 +7,18 @@
   <div id="content-header">
     <div id="breadcrumb">
       <a href="<?= url("/admin/index"); ?>" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a>
-      <a href="" class="current">Usertype</a>
+      <a href="" class="current">Posttype</a>
     </div>
   </div>
   <div class="container-fluid">
     <div class="row-fluid">
-      <form method="usertype" action="">
+      <form method="posttype" action="">
         <div class="span12">
           <div class="widget-box">
             <div class="widget-content nopadding">
               <ul class="recent-users"> 
                 <li>
-                  <a href="<?= url('/admin/usertype/add'); ?>" class="btn btn-success btn-mini">ADD</a>
+                  <a href="<?= url('/admin/posttype/add'); ?>" class="btn btn-success btn-mini">ADD</a>
                 </li>
               </ul>
             </div>
@@ -33,7 +33,7 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <?php foreach ($usertype as $value) 
+                  <?php foreach ($posttype as $value) 
                   {
                   ?>
                   <tr>
@@ -46,18 +46,18 @@
                           echo '<td>Activated</td>';
                     ?>
                     <td class="center">
-                      <a href="<?= url('/admin/usertype/edit/'.$value->id); ?>" class="btn btn-primary btn-mini"><i class="icon icon-pencil"></i></a>
+                      <a href="<?= url('/admin/posttype/edit/'.$value->id); ?>" class="btn btn-primary btn-mini"><i class="icon icon-pencil"></i></a>
                       <?php
                           if($value->status == 1)
                         {
                       ?>
-                          <a href="<?= url('/admin/usertype/deactivated/'.$value->id); ?>" class="btn btn-danger btn-mini "><i class="icon icon-ban-circle"></i></a>
+                          <a href="<?= url('/admin/posttype/deactivated/'.$value->id); ?>" class="btn btn-danger btn-mini "><i class="icon icon-ban-circle"></i></a>
                       <?php
                         }
                         else
                         {
                       ?>
-                          <a href="<?= url('/admin/usertype/activated/'.$value->id); ?>" class="btn btn-success btn-mini "><i class="icon icon-check"></i></a>
+                          <a href="<?= url('/admin/posttype/activated/'.$value->id); ?>" class="btn btn-success btn-mini "><i class="icon icon-check"></i></a>
                           <?php
                         }
                       echo '</td>';

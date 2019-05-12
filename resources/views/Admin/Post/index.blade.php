@@ -62,29 +62,34 @@
                     <td><?= $value->id ?></td>
                     <td><?= $value->name ?></td>
                     <td><?= $value->insert_time ?></td>
-                    <td><?= $value->posttype_id ?></td>
-                    <td><?= $value->user_id ?></td>
                     <td><?= $value->view ?></td>
+                    <td><?= $value->postypename ?></td>
+                    <td><?= $value->username ?></td>
                     <?php
                         if($value->status == 0)
-                          echo '<td>Deactivated</td>';
-                        else
+                          echo '<td>Waiting for moderation</td>';
+                        elseif ($value->status == 1) {
                           echo '<td>Activated</td>';
+                        }
+                        else
+                          echo '<td>Denied</td>';
                     ?>
                     <td class="center">
+                      <a href="<?= url('/admin/post/view/'.$value->id); ?>" class="btn btn-success btn-mini"><i class="icon icon-eye-open"></i></a>
                       <a href="<?= url('/admin/post/edit/'.$value->id); ?>" class="btn btn-primary btn-mini"><i class="icon icon-pencil"></i></a>
                       <?php
                         if(isset($value->status))
-                          if($value->status == 1)
+                          if($value->status == 1 || $value->status == 2)
                         {
                       ?>
-                          <a href="<?= url('/admin/post/deactivated/'.$value->id); ?>" class="btn btn-danger btn-mini "><i class="icon icon-ban-circle"></i></a>
+                          <a href="<?= url('/admin/post/deactivated/'.$value->id); ?>" class="btn btn-danger btn-mini ">X</a>
                       <?php
                         }
                         else
                         {
                       ?>
                           <a href="<?= url('/admin/post/activated/'.$value->id); ?>" class="btn btn-success btn-mini "><i class="icon icon-check"></i></a>
+                          <a href="<?= url('/admin/post/denied/'.$value->id); ?>" class="btn btn-danger btn-mini "><i class="icon icon-ban-circle"></i></a>
                           <?php
                             }
                           }

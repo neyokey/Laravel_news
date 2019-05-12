@@ -59,23 +59,27 @@
                     <td><?= $value->postname ?></td>
                     <?php
                         if($value->status == 0)
-                          echo '<td>Deactivated</td>';
-                        else
+                          echo '<td>Waiting for moderation</td>';
+                        elseif ($value->status == 1) {
                           echo '<td>Activated</td>';
+                        }
+                        else
+                          echo '<td>Denied</td>';
                     ?>
                     <td class="center">
                       <a href="<?= url('/admin/comment/view/'.$value->id); ?>" class="btn btn-primary btn-mini"><i class="icon icon-eye-open"></i></a>
                       <?php
-                          if($value->status == 1)
+                          if($value->status == 1 || $value->status == 2)
                         {
                       ?>
-                          <a href="<?= url('/admin/comment/deactivated/'.$value->id); ?>" class="btn btn-danger btn-mini "><i class="icon icon-ban-circle"></i></a>
+                          <a href="<?= url('/admin/comment/deactivated/'.$value->id); ?>" class="btn btn-danger btn-mini ">X</a>
                       <?php
                         }
                         else
                         {
                       ?>
                           <a href="<?= url('/admin/comment/activated/'.$value->id); ?>" class="btn btn-success btn-mini "><i class="icon icon-check"></i></a>
+                          <a href="<?= url('/admin/comment/denied/'.$value->id); ?>" class="btn btn-danger btn-mini "><i class="icon icon-ban-circle"></i></a>
                           <?php
                         }
                       echo '</td>';

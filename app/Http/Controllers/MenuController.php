@@ -6,7 +6,7 @@ use App\menu;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Request;
-
+use Illuminate\Support\Facades\Redirect;
 
 class MenuController extends Controller
 {
@@ -30,6 +30,10 @@ class MenuController extends Controller
     {
     	$name = 'menu';
         $menu = DB::table('menu')->where('id', $id)->get();
+        if($menu->isEmpty())
+        {
+            return Redirect::to(url('/admin/menu/'));
+        }
     	if($request::post() != null)
     	{
             $old_position = $menu[0]->position;

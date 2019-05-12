@@ -2,57 +2,57 @@
 
 namespace App\Http\Controllers;
 
-use App\usertype;
+use App\posttype;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Redirect;
 
-class UsertypeController extends Controller
+class PosttypeController extends Controller
 {
 	public function index()
 	{
- 		$name = 'usertype';
- 		$usertype = DB::table('usertype')->get();
-        return view('admin.usertype.index',['usertype' => $usertype,'name' => $name]);
+ 		$name = 'posttype';
+ 		$posttype = DB::table('posttype')->get();
+        return view('admin.posttype.index',['posttype' => $posttype,'name' => $name]);
     }
     public function add(Request $request)
     {
-        $name = 'usertype';
+        $name = 'posttype';
         if($request::post() != null)
         {
-            DB::table('usertype')->insert(['name' => $request::post()['name']]);
-            return redirect()->action('UsertypeController@index');
+            DB::table('posttype')->insert(['name' => $request::post()['name']]);
+            return redirect()->action('PosttypeController@index');
         }
-        return view('admin.usertype.add',['name' => $name]);
+        return view('admin.posttype.add',['name' => $name]);
     }
     public function edit($id = null,Request $request)
     {
-    	$name = 'usertype';
+    	$name = 'posttype';
     	if($request::post() != null)
     	{
-			DB::table('usertype')
+			DB::table('posttype')
 	            ->where('id', $id)
 	            ->update(['name' => $request::post()['name']]);
-	        return redirect()->action('UsertypeController@index');
+	        return redirect()->action('posttypeController@index');
     	}
-    	$usertype = DB::table('usertype')->where('id', $id)->get();
-        if($usertype->isEmpty())
+    	$posttype = DB::table('posttype')->where('id', $id)->get();
+        if($posttype->isEmpty())
         {
-            return Redirect::to(url('/admin/usertype/'));
+            return Redirect::to(url('/admin/posttype/'));
         }
-        return view('admin.usertype.edit',['usertype' => $usertype,'name' => $name]);
+        return view('admin.posttype.edit',['posttype' => $posttype,'name' => $name]);
     }
     public function deactivated($id)
     {
-        DB::table('usertype')
+        DB::table('posttype')
             ->where('id', $id)
             ->update(['status' => 0]);
         return redirect()->back();
     }
     public function activated($id)
     {
-        DB::table('usertype')
+        DB::table('posttype')
             ->where('id', $id)
             ->update(['status' => 1]);
         return redirect()->back();

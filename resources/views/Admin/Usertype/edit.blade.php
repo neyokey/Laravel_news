@@ -7,7 +7,7 @@
     <div id="content-header">
         <div id="breadcrumb"> 
             <a href="<?= url("/admin/index"); ?>" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a>
-            <a href="<?= url("/admin/usertype"); ?>" title="Ứng viên" >usertype </a>
+            <a href="<?= url("/admin/usertype"); ?>" title="Ứng viên" >Usertype </a>
             <a href="" class="current">Edit </a>
         </div>
     </div>

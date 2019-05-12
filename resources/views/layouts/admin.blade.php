@@ -38,7 +38,7 @@
   </div>
   <div id="sidebar"><a href="" class="visible-phone"><i class="icon icon-home"></i> Dashboard</a>
     <ul class="nav">
-      <li>
+      <li class="<?php if($name =='index') echo 'active'; ?>">
        <a href="<?= url("/admin/index"); ?>"><i class="icon icon-home"></i> <span>Dashboard</span></a> 
       </li>
       <li class="submenu <?php if($name =='user' || $name =='usertype') echo 'open'; ?>">
@@ -103,6 +103,9 @@
   <script src="<?= url("/js/admin/jquery.uniform.js"); ?>"></script>
 
 </body>
-</html>
+<script>
+  $('.textarea_editor').wysihtml5();
+  $('.textarea_editor1').wysihtml5();
+</script>
 
 

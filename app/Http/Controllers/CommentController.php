@@ -42,4 +42,11 @@ class CommentController extends Controller
             ->update(['status' => 1]);
         return redirect()->back();
     }
+    public function denied($id)
+    {
+        DB::table('comment')
+            ->where('id', $id)
+            ->update(['status' => 2]);
+        return redirect()->back();
+    }
 }
