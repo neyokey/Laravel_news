@@ -37,6 +37,18 @@
             <div class="widget-content nopadding">
               <ul class="recent-users"> 
                 <li>
+                  @if($errors->has('error'))
+                  <div class="alert alert-danger">
+                      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                      {{$errors->first('error')}}
+                  </div>
+                  @endif
+                  @if($errors->has('success'))
+                  <div class="alert alert-success">
+                      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                      {{$errors->first('success')}}
+                  </div>
+                  @endif
                   <a href="<?= url('/admin/user/add'); ?>" class="btn btn-success btn-mini">ADD</a>
                 </li>
               </ul>

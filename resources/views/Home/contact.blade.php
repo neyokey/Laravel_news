@@ -14,18 +14,31 @@
 
         <!-- Contact Form Area -->
         <div class="contact-form-area mt-50">
-            <form action="#" method="post">
+            @if($errors->has('failSent'))
+            <div class="alert alert-danger">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                {{$errors->first('failSent')}}
+            </div>
+            @endif
+            @if($errors->has('successSent'))
+            <div class="alert alert-success">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                {{$errors->first('successSent')}}
+            </div>
+            @endif
+            <form action="<?= url('admin/message/add')?>" method="post">
+            @csrf
                 <div class="form-group">
-                    <label for="name">Name*</label>
-                    <input type="text" class="form-control" id="name">
+                    <label for="name">Name</label>
+                    <input type="text" class="form-control" required="required" id="name" name='name'>
                 </div>
                 <div class="form-group">
-                    <label for="email">Email*</label>
-                    <input type="email" class="form-control" id="email">
+                    <label for="email">Email</label>
+                    <input type="email" class="form-control" required="required" id="email" name='email'>
                 </div>
                 <div class="form-group">
-                    <label for="message">Message*</label>
-                    <textarea name="message" class="form-control" id="message" cols="30" rows="10"></textarea>
+                    <label for="content">Message</label>
+                    <textarea name="content" class="form-control" required="required" id="content" cols="30" rows="10" name='content'></textarea>
                 </div>
                 <button class="btn vizew-btn mt-30" type="submit">Send Now</button>
             </form>

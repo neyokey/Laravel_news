@@ -47,7 +47,8 @@
                   <tr>
                     <th>ID</th>
                     <th>Name</th>
-                    <th>Insertime</th>
+                    <th>Image</th>
+                    <th>Insert time</th>
                     <th>View count</th>
                     <th>Type</th>
                     <th>User</th>
@@ -61,6 +62,7 @@
                   <tr>
                     <td><?= $value->id ?></td>
                     <td><?= $value->name ?></td>
+                    <td><img src="<?= $value->image ?>" width="50"></td>
                     <td><?= $value->insert_time ?></td>
                     <td><?= $value->view ?></td>
                     <td><?= $value->postypename ?></td>

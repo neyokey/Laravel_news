@@ -22,11 +22,12 @@
             <div class="container">
                 <div class="row row__offset-2">
                     <div class="grid_6">
-                        <div style="font-size: 20px; font-weight: bold;"><?= $post[0]->name ?></div>
+                        <div style="font-size: 30px; font-weight: bold;"><?= $post[0]->name ?></div>
                         <br>
-                        <?php echo 'Name: '.$post[0]->username.'<br><br> Time: '. $post[0]->insert_time;  ?>
+                        <?php echo 'By: '.$post[0]->username.'<br><br> Time: '. $post[0]->insert_time;  ?>
                         <br>
                         <br>
+                        <div><image width='100px' src='<?= $post[0]->image ?>'></image></div>
                     </div>
                     <div class="grid_2">
                         <br>
@@ -36,7 +37,7 @@
                     <div style="font-size: 20px" class="grid_3 center">
                     </div>
                 </div>
-                <div class="row row__offset-2" style="font-size: 25px">
+                <div class="row row__offset-2" style="font-size: 15px">
                     <div class="grid_7 news_content">
                         <?php
                              echo $post[0]->content;

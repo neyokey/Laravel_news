@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Redirect;
+use Auth;
 
 class PostController extends Controller
 {
@@ -35,6 +36,18 @@ class PostController extends Controller
         }
         return view('admin.post.view',['post' => $post,'name' => $name]);
     }
+    public function add(Request $request)
+    {
+        $name = 'post';
+        if($request::post() != null)
+        {
+            DB::table('post')
+                ->insert(['name' => $request::post()['name'],'image' => $request::post()['image'],'content' => $request::post()['content'],'view' => $request::post()['view'],'posttype_id' => $request::post()['posttype_id'],'user_id' => Auth::user()->id]);
+            return redirect()->action('PostController@index');
+        }
+        $posttype = DB::table('posttype')->where('status', '1')->get();
+        return view('admin.post.add',['posttype' => $posttype,'name' => $name]);
+    }
     public function edit($id = null,Request $request)
     {
     	$name = 'post';
@@ -42,7 +55,7 @@ class PostController extends Controller
     	{
 			DB::table('post')
 	            ->where('id', $id)
-	            ->update(['name' => $request::post()['name'],'content' => $request::post()['content'],'view' => $request::post()['view'],'posttype_id' => $request::post()['posttype_id']]);
+	            ->update(['name' => $request::post()['name'],'image' => $request::post()['image'],'content' => $request::post()['content'],'view' => $request::post()['view'],'posttype_id' => $request::post()['posttype_id']]);
 	        return redirect()->action('PostController@index');
     	}
     	$post = DB::table('post')->where('id', $id)->get();

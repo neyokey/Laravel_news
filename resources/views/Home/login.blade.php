@@ -22,13 +22,13 @@
                         <form action="<?= url('login')?>" method="post">
                             @csrf
                             <div class="form-group">
-                                <input type="email" class="form-control" id="exampleInputEmail" placeholder="Email or User Name" name="email">
+                                <input type="email" class="form-control" id="email" placeholder="Email or User Name" name="email">
                                 @if($errors->has('email'))
                                     <p style="color:red">{{$errors->first('email')}}</p>
                                 @endif
                             </div>
                             <div class="form-group">
-                                <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" name="password">
+                                <input type="password" class="form-control" id="password" placeholder="Password" name="password">
                                 @if($errors->has('password'))
                                     <p style="color:red">{{$errors->first('password')}}</p>
                                 @endif

@@ -16,6 +16,7 @@ Route::group(['prefix' => '/'], function () {
     Route::get('index', 'HomeController@index');
     Route::match(['get', 'post'],'login', 'HomeController@login');
     Route::match(['get', 'post'],'contact', 'HomeController@contact');
+    Route::get('logout', 'HomeController@logout');
     Route::get('post/{id}', 'HomeController@post');
     Route::group(['prefix' => 'admin/'], function () {
         
@@ -56,6 +57,7 @@ Route::group(['prefix' => '/'], function () {
         Route::get('deactivated/{id}', 'CommentController@deactivated');
         Route::get('activated/{id}', 'CommentController@activated');
         Route::get('denied/{id}', 'CommentController@denied');
+        Route::match(['get', 'post'],'add', 'CommentController@add');
         Route::match(['get', 'post'],'view/{id}', 'CommentController@view');
         });
     Route::group(['prefix' => '/contact/'], function () {
@@ -67,6 +69,7 @@ Route::group(['prefix' => '/'], function () {
         Route::get('deactivated/{id}', 'MessageController@deactivated');
         Route::get('activated/{id}', 'MessageController@activated');
         Route::get('denied/{id}', 'MessageController@denied');
+        Route::match(['get', 'post'],'add', 'MessageController@add');
         Route::match(['get', 'post'],'view/{id}', 'MessageController@view');
         });
     Route::group(['prefix' => '/menu/'], function () {

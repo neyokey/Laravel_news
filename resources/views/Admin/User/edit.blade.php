@@ -39,6 +39,9 @@
                             <div class="controls">
                                 <div class="input text required">
                                     <input type="text" name="email" class="span6" value="<?= $user[0]->email?>" required="required" maxlength="50" id="email" />
+                                    @if($errors->has('email'))
+                                        <p style="color:red">{{$errors->first('email')}}</p>
+                                    @endif
                                 </div>
                             </div>
                         </div>
@@ -48,6 +51,9 @@
                                 <div class="input text required">
                                     <input type="text" name="password" class="span6" value="<?= $user[0]->password?>" required="required" maxlength="50" id="password" />
                                 </div>
+                                @if($errors->has('password'))
+                                    <p style="color:red">{{$errors->first('password')}}</p>
+                                @endif
                             </div>
                         </div>
                         <div class="control-group ">

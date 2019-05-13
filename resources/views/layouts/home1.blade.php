@@ -86,10 +86,12 @@
                                             foreach ($data['menu'] as $value) {
                                                 if($value->link == '')
                                                 {
+                                                    if(Auth::check() == false && $value->id =='19')
+                                                        continue;
                                                     echo '<li><a href="#">'.$value->name.'</a><ul class="dropdown">';
                                                     foreach ($data['submenu'] as $subvalue) {
                                                         if($subvalue->menu_id == $value->id)
-                                                            echo '<li><a href="'.url($subvalue->name).'">-'.$subvalue->name.'</a></li>';
+                                                            echo '<li><a href="'.url($subvalue->link).'">-'.$subvalue->name.'</a></li>';
                                                     }
                                                     echo '</ul></li>';
                                                 }
@@ -136,84 +138,32 @@
                             <div class="single-widget mb-50">
                                 <!-- Section Heading -->
                                 <div class="section-heading style-2 mb-30">
-                                    <h4>Most Viewed Playlist</h4>
+                                    <h4>Most Viewed</h4>
                                     <div class="line"></div>
                                 </div>
-
-                                <!-- Single Blog Post -->
-                                <div class="single-blog-post d-flex">
-                                    <div class="post-thumbnail">
-                                        <img src="img/home/bg-img/1.jpg" alt="">
-                                    </div>
-                                    <div class="post-content">
-                                        <a href="single-post.html" class="post-title">DC Shoes: gymkhana five; the making of</a>
-                                        <div class="post-meta d-flex justify-content-between">
-                                            <a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i> 14</a>
-                                            <a href="#"><i class="fa fa-eye" aria-hidden="true"></i> 34</a>
-                                            <a href="#"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> 84</a>
+                                <?php 
+                                    foreach ($data['mostview_post'] as $value) {
+                                        $maxPos = 50;
+                                        if (strlen($value->name) > $maxPos)
+                                        {
+                                            $lastPos = ($maxPos - 3) - strlen($value->name);
+                                            $value->name = substr($value->name, 0, strrpos($value->name, ' ', $lastPos)) . '...';
+                                        }
+                                        ?>
+                                            <div class="single-blog-post d-flex">
+                                            <div class="post-thumbnail">
+                                                <img src="<?= $value->image ?>" alt="">
+                                            </div>
+                                            <div class="post-content">
+                                                <a href="<?= url('home/post/'.$value->id) ?>" class="post-title"><?= $value->name ?></a>
+                                                <div class="post-meta d-flex justify-content-between">
+                                                    <a href="#"><i class="fa fa-eye" aria-hidden="true"></i> <?= $value->view ?></a>
+                                                </div>
+                                            </div>
                                         </div>
-                                    </div>
-                                </div>
-
-                                <!-- Single Blog Post -->
-                                <div class="single-blog-post d-flex">
-                                    <div class="post-thumbnail">
-                                        <img src="img/home/bg-img/2.jpg" alt="">
-                                    </div>
-                                    <div class="post-content">
-                                        <a href="single-post.html" class="post-title">How To Make Orange Chicken Recipe?</a>
-                                        <div class="post-meta d-flex justify-content-between">
-                                            <a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i> 14</a>
-                                            <a href="#"><i class="fa fa-eye" aria-hidden="true"></i> 34</a>
-                                            <a href="#"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> 84</a>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <!-- Single Blog Post -->
-                                <div class="single-blog-post d-flex">
-                                    <div class="post-thumbnail">
-                                        <img src="img/home/bg-img/36.jpg" alt="">
-                                    </div>
-                                    <div class="post-content">
-                                        <a href="single-post.html" class="post-title">Sweet Yummy Chocolate in the</a>
-                                        <div class="post-meta d-flex justify-content-between">
-                                            <a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i> 14</a>
-                                            <a href="#"><i class="fa fa-eye" aria-hidden="true"></i> 34</a>
-                                            <a href="#"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> 84</a>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <!-- Single Blog Post -->
-                                <div class="single-blog-post d-flex">
-                                    <div class="post-thumbnail">
-                                        <img src="img/home/bg-img/37.jpg" alt="">
-                                    </div>
-                                    <div class="post-content">
-                                        <a href="single-post.html" class="post-title">DC Shoes: gymkhana five; the making of</a>
-                                        <div class="post-meta d-flex justify-content-between">
-                                            <a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i> 14</a>
-                                            <a href="#"><i class="fa fa-eye" aria-hidden="true"></i> 34</a>
-                                            <a href="#"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> 84</a>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <!-- Single Blog Post -->
-                                <div class="single-blog-post d-flex">
-                                    <div class="post-thumbnail">
-                                        <img src="img/home/bg-img/38.jpg" alt="">
-                                    </div>
-                                    <div class="post-content">
-                                        <a href="single-post.html" class="post-title">How To Make Orange Chicken Recipe?</a>
-                                        <div class="post-meta d-flex justify-content-between">
-                                            <a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i> 14</a>
-                                            <a href="#"><i class="fa fa-eye" aria-hidden="true"></i> 34</a>
-                                            <a href="#"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> 84</a>
-                                        </div>
-                                    </div>
-                                </div>
+                                        <?php
+                                    }
+                                ?>
                             </div>
                         </div>
                     </div>

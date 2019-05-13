@@ -66,9 +66,12 @@
                           <a href="<?= url('/admin/menu/activated/'.$value->id); ?>" class="btn btn-success btn-mini "><i class="icon icon-check"></i></a>
                       <?php
                           }
+                          if($value->id != '19')
+                          {
                       ?>
                           <a href="<?= url('/admin/menu/delete/'.$value->id); ?>" class="btn btn-danger btn-mini">X</i></a>  
                       <?php
+                          }
                         }
                       ?>
                     </td>

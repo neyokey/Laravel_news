@@ -81,10 +81,12 @@
                                             foreach ($data['menu'] as $value) {
                                                 if($value->link == '')
                                                 {
+                                                    if(Auth::check() == false && $value->id =='19')
+                                                        continue;
                                                     echo '<li><a href="#">'.$value->name.'</a><ul class="dropdown">';
                                                     foreach ($data['submenu'] as $subvalue) {
                                                         if($subvalue->menu_id == $value->id)
-                                                            echo '<li><a href="'.url($subvalue->name).'">-'.$subvalue->name.'</a></li>';
+                                                            echo '<li><a href="'.url($subvalue->link).'">-'.$subvalue->name.'</a></li>';
                                                     }
                                                     echo '</ul></li>';
                                                 }

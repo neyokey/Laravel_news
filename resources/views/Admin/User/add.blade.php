@@ -39,6 +39,9 @@
                             <div class="controls">
                                 <div class="input text required">
                                     <input type="text" name="email" class="span6" required="required" maxlength="50" id="email" />
+                                    @if($errors->has('email'))
+                                        <p style="color:red">{{$errors->first('email')}}</p>
+                                    @endif
                                 </div>
                             </div>
                         </div>
@@ -47,6 +50,9 @@
                             <div class="controls">
                                 <div class="input text required">
                                     <input type="text" name="password" class="span6" required="required" maxlength="50" id="password" />
+                                    @if($errors->has('email'))
+                                        <p style="color:red">{{$errors->first('password')}}</p>
+                                    @endif
                                 </div>
                             </div>
                         </div>
