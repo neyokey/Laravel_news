@@ -39,7 +39,7 @@
                             <label class="control-label">Link</label>
                             <div class="controls">
                                 <div class="input text required">
-                                    <input type="text" name="link" class="span6" value="<?= $submenu[0]->link?>"  maxlength="50" id="link" />
+                                    <input type="text" required="required" name="link" class="span6" value="<?= $submenu[0]->link?>"  maxlength="50" id="link" />
                                 </div>
                             </div>
                         </div>
@@ -47,7 +47,10 @@
                             <label class="control-label">Position</label>
                             <div class="controls">
                                 <div class="input text required">
-                                    <input type="text" name="position" class="span6" value="<?= $submenu[0]->position?>" required="required" maxlength="50" id="position" />
+                                    <input type="number" name="position" class="span6" value="<?= $submenu[0]->position?>" required="required" maxlength="50" id="position" />
+                                    @if($errors->has('position'))
+                                        <p style="color:red">{{$errors->first('position')}}</p>
+                                    @endif
                                 </div>
                             </div>
                         </div>

@@ -46,7 +46,7 @@
                             <label class="control-label">Phone</label>
                             <div class="controls">
                                 <div class="input text required">
-                                    <input type="text" name="phone" class="span6" value="<?= $contact[0]->phone?>" required="required" maxlength="50" id="phone" />
+                                    <input type="number" name="phone" class="span6" value="<?= $contact[0]->phone?>" required="required" maxlength="50" id="phone" />
                                 </div>
                             </div>
                         </div>
@@ -54,7 +54,7 @@
                             <label class="control-label">Email</label>
                             <div class="controls">
                                 <div class="input text required">
-                                    <input type="text" name="email" class="span6" value="<?= $contact[0]->email?>" required="required" maxlength="50" id="email" />
+                                    <input type="email" name="email" class="span6" value="<?= $contact[0]->email?>" required="required" maxlength="50" id="email" />
                                 </div>
                             </div>
                         </div>

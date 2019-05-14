@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\MessageBag;
 
 class PosttypeController extends Controller
 {
@@ -21,8 +22,11 @@ class PosttypeController extends Controller
         $name = 'posttype';
         if($request::post() != null)
         {
-            DB::table('posttype')->insert(['name' => $request::post()['name']]);
-            return redirect()->action('PosttypeController@index');
+            if(DB::table('posttype')->insert(['name' => $request::post()['name']]))
+                    $message = new MessageBag(['success' => 'Edit user type success']);
+                else
+                    $message = new MessageBag(['error' => 'Edit user type error']);
+                 return redirect()->action('PosttypeController@index')->withInput()->withErrors($message);
         }
         return view('admin.posttype.add',['name' => $name]);
     }
@@ -31,10 +35,13 @@ class PosttypeController extends Controller
     	$name = 'posttype';
     	if($request::post() != null)
     	{
-			DB::table('posttype')
-	            ->where('id', $id)
-	            ->update(['name' => $request::post()['name']]);
-	        return redirect()->action('posttypeController@index');
+            if(DB::table('posttype')
+                ->where('id', $id)
+                ->update(['name' => $request::post()['name']]))
+                    $message = new MessageBag(['success' => 'Edit user type success']);
+                else
+                    $message = new MessageBag(['error' => 'Edit user type error']);
+                 return redirect()->action('PosttypeController@index')->withInput()->withErrors($message);
     	}
     	$posttype = DB::table('posttype')->where('id', $id)->get();
         if($posttype->isEmpty())
@@ -45,16 +52,18 @@ class PosttypeController extends Controller
     }
     public function deactivated($id)
     {
-        DB::table('posttype')
-            ->where('id', $id)
-            ->update(['status' => 0]);
-        return redirect()->back();
+        if(DB::table('posttype')->where('id', $id)->update(['status' => 0]))
+            $message = new MessageBag(['success' => 'Deactivated success']);
+        else
+            $message = new MessageBag(['error' => 'Deactivated error']);
+        return redirect()->back()->withInput()->withErrors($message);
     }
     public function activated($id)
     {
-        DB::table('posttype')
-            ->where('id', $id)
-            ->update(['status' => 1]);
-        return redirect()->back();
+        if(DB::table('posttype')->where('id', $id)->update(['status' => 1]))
+            $message = new MessageBag(['success' => 'Activated success']);
+        else
+            $message = new MessageBag(['error' => 'Deactivated error']);
+        return redirect()->back()->withInput()->withErrors($message);
     }
 }

@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\MessageBag;
 
 class SubmenuController extends Controller
 {
@@ -24,9 +25,21 @@ class SubmenuController extends Controller
         $name = 'submenu';
         if($request::post() != null)
         {
-            DB::table('submenu')->insert(['name' => $request::post()['name'],'link' => $request::post()['link'],'position' => $request::post()['position'],'menu_id' => $id]);
-
-            return redirect()->action('MenuController@index');
+            $submenu = DB::table('submenu')->where('position',$request::post()['position'])
+                                        ->where('menu_id',$id)->get();
+            if($submenu->isEmpty())
+            {
+                if(DB::table('submenu')->insert(['name' => $request::post()['name'],'link' => $request::post()['link'],'position' => $request::post()['position'],'menu_id' => $id]))
+                    $message = new MessageBag(['success' => 'Add smenu successfully']);
+                else
+                    $message = new MessageBag(['error' => 'Add smenu error']);
+                return redirect()->action('SubmenuController@index',['id' => $id])->withInput()->withErrors($message);
+            }
+            else
+            {
+                $message = new MessageBag(['position' => 'Duplicate position']);
+                return redirect()->back()->withInput()->withErrors($message);
+            }
         }
         return view('admin.submenu.add',['name' => $name,'id' => $id]);
     }
@@ -48,6 +61,8 @@ class SubmenuController extends Controller
                 DB::table('submenu')
                     ->where('id', $subid)
                     ->update(['name' => $request::post()['name'],'link' => $request::post()['link'],'position' => $request::post()['position']]);
+                $message = new MessageBag(['success' => 'Edit submenu successfully']);
+                return redirect()->action('SubmenuController@index',['id' => $id])->withInput()->withErrors($message);
             }
             else
             {
@@ -61,28 +76,36 @@ class SubmenuController extends Controller
                 DB::table('submenu')
                     ->where('id', $submenu2->id)
                     ->update(['position' => $old_position]);
+                $message = new MessageBag(['success' => 'Edit submenu successfully']);
+                return redirect()->action('SubmenuController@index',['id' => $id])->withInput()->withErrors($message);
             }
-	        return redirect()->action('MenuController@index');
+	        $message = new MessageBag(['error' => 'Edit submenu error']);
+            return redirect()->action('SubmenuController@index',['id' => $id])->withInput()->withErrors($message);
     	}
         return view('admin.submenu.edit',['submenu' => $submenu,'name' => $name,'id' => $id]);
     }
-    public function deactivated($id = null,$subid = null)
+    public function deactivated($id = null, $subid = null)
     {
-        DB::table('submenu')
-            ->where('id', $subid)
-            ->update(['status' => 0]);
-        return redirect()->back();
+        if(DB::table('submenu')->where('id', $subid)->update(['status' => 0]))
+            $message = new MessageBag(['success' => 'Change stastus successfully']);
+        else
+            $message = new MessageBag(['error' => 'Change stastus error']);
+        return redirect()->back()->withInput()->withErrors($message);
     }
-    public function activated($id = null,$subid = null)
+    public function activated($id = null, $subid = null)
     {
-        DB::table('submenu')
-            ->where('id', $subid)
-            ->update(['status' => 1]);
-        return redirect()->back();
+        if(DB::table('submenu')->where('id', $subid)->update(['status' => 1]))
+            $message = new MessageBag(['success' => 'Change stastus successfully']);
+        else
+            $message = new MessageBag(['error' => 'Change stastus error']);
+        return redirect()->back()->withInput()->withErrors($message);
     }
-    public function delete($id = null,$subid = null)
+    public function delete($id = null, $subid = null)
     {
-        DB::table('submenu')->where('id', $subid)->delete();
-        return redirect()->back();
+        if(DB::table('submenu')->where('id', $subid)->delete())
+            $message = new MessageBag(['success' => 'Delete submenu successfully']);
+        else
+            $message = new MessageBag(['error' => 'Delete submenu error']);
+        return redirect()->back()->withInput()->withErrors($message);
     }
 }

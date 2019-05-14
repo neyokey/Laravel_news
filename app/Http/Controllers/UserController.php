@@ -104,7 +104,7 @@ class UserController extends Controller
     	$usertype = DB::table('usertype')->where('status', '1')->get();
         return view('admin.user.edit',['user' => $user,'usertype' => $usertype,'name' => $name]);
     }
-     public function deactivated($id)
+    public function deactivated($id)
     {
         if(DB::table('user')->where('id', $id)->update(['status' => 0]))
             $message = new MessageBag(['success' => 'Deactivated success']);

@@ -10,9 +10,25 @@
             <div class="line"></div>
         </div>
 
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
-
-        <!-- Contact Form Area -->
+            <blockquote class="vizew-blockquote mb-15">
+                <h5>Address: <?= $data['contact'][0]->address ?></h5>
+                <h5>Phone: <?= $data['contact'][0]->phone ?></h5>
+                <h5>Email: <?= $data['contact'][0]->email ?></h5>
+                <div class="post-tags mt-30">
+                    <ul>
+                        <li><a href="<?= $data['contact'][0]->link_fb ?>" class="facebook"><i class="fa fa-facebook"></i></a></li>
+                        <li><a href="<?= $data['contact'][0]->link_ins ?>" class="instagram"><i class="fa fa-instagram"></i></a></li>
+                        <li><a href="<?= $data['contact'][0]->link_yt ?>" class="youtube"><i class="fa fa-youtube"></i></a></li>
+                    </ul>
+                </div>
+            </blockquote>
+        <br>
+        <br>
+        <div class="section-heading style-2">
+            <h4>Message form</h4>
+            <div class="line"></div>
+        </div>
+        <p>Sent we some message</p>
         <div class="contact-form-area mt-50">
             @if($errors->has('failSent'))
             <div class="alert alert-danger">

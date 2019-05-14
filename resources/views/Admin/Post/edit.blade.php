@@ -29,7 +29,7 @@
               <label class="control-label">Name</label>
               <div class="controls">
                   <div class="input text required">
-                      <input type="text" name="name" class="span6" value="<?= $post[0]->name?>" required="required" maxlength="50" id="name" />
+                      <input type="text" name="name" class="span6" value="<?= $post[0]->name?>" required="required" id="name" />
                   </div>
               </div>
             </div>
@@ -45,7 +45,7 @@
               <label class="control-label">Content</label>
               <div class="controls">
                 <div class="input text required">
-                    <textarea type="text" name="content" class="textarea_editor span20" style = "min-height: 500px" id="editor"  required="required"><?= $post[0]->content?></textarea>
+                    <textarea type="text" name="content" class="textarea_edito span20" style = "min-height: 500px" id="editor"  required="required"><?= $post[0]->content?></textarea>
                 </div>
               </div>
             </div>

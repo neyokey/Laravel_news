@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Redirect;
 use Auth;
+use Illuminate\Support\MessageBag;
 
 class PostController extends Controller
 {
@@ -41,9 +42,12 @@ class PostController extends Controller
         $name = 'post';
         if($request::post() != null)
         {
-            DB::table('post')
-                ->insert(['name' => $request::post()['name'],'image' => $request::post()['image'],'content' => $request::post()['content'],'view' => $request::post()['view'],'posttype_id' => $request::post()['posttype_id'],'user_id' => Auth::user()->id]);
-            return redirect()->action('PostController@index');
+            if(DB::table('post')
+                ->insert(['name' => $request::post()['name'],'image' => $request::post()['image'],'content' => $request::post()['content'],'view' => $request::post()['view'],'posttype_id' => $request::post()['posttype_id'],'user_id' => Auth::user()->id]))
+                $message = new MessageBag(['success' => 'Add post success']);
+            else
+                $message = new MessageBag(['error' => 'Add post error']);
+            return redirect()->action('PostController@index')->withInput()->withErrors($message);
         }
         $posttype = DB::table('posttype')->where('status', '1')->get();
         return view('admin.post.add',['posttype' => $posttype,'name' => $name]);
@@ -53,10 +57,12 @@ class PostController extends Controller
     	$name = 'post';
     	if($request::post() != null)
     	{
-			DB::table('post')
-	            ->where('id', $id)
-	            ->update(['name' => $request::post()['name'],'image' => $request::post()['image'],'content' => $request::post()['content'],'view' => $request::post()['view'],'posttype_id' => $request::post()['posttype_id']]);
-	        return redirect()->action('PostController@index');
+            if(DB::table('post')->where('id', $id)
+                ->update(['name' => $request::post()['name'],'image' => $request::post()['image'],'content' => $request::post()['content'],'view' => $request::post()['view'],'posttype_id' => $request::post()['posttype_id']]))
+                $message = new MessageBag(['success' => 'Edit post success']);
+            else
+                $message = new MessageBag(['error' => 'Edit post error']);
+            return redirect()->action('PostController@index')->withInput()->withErrors($message);
     	}
     	$post = DB::table('post')->where('id', $id)->get();
         if($post->isEmpty())
@@ -68,23 +74,26 @@ class PostController extends Controller
     }
     public function deactivated($id)
     {
-        DB::table('post')
-            ->where('id', $id)
-            ->update(['status' => 0]);
-        return redirect()->back();
+        if(DB::table('post')->where('id', $id)->update(['status' => 0]))
+            $message = new MessageBag(['success' => 'Deactivated success']);
+        else
+            $message = new MessageBag(['error' => 'Deactivated error']);
+        return redirect()->back()->withInput()->withErrors($message);
     }
     public function activated($id)
     {
-        DB::table('post')
-            ->where('id', $id)
-            ->update(['status' => 1]);
-        return redirect()->back();
+        if(DB::table('post')->where('id', $id)->update(['status' => 1]))
+            $message = new MessageBag(['success' => 'Activated success']);
+        else
+            $message = new MessageBag(['error' => 'Deactivated error']);
+        return redirect()->back()->withInput()->withErrors($message);
     }
     public function denied($id)
     {
-        DB::table('post')
-            ->where('id', $id)
-            ->update(['status' => 2]);
-        return redirect()->back();
+        if(DB::table('post')->where('id', $id)->update(['status' => 2]))
+            $message = new MessageBag(['success' => 'Denied success']);
+        else
+            $message = new MessageBag(['error' => 'Denied error']);
+        return redirect()->back()->withInput()->withErrors($message);
     }
 }

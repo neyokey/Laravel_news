@@ -35,6 +35,18 @@
         <div class="span12">
           <div class="widget-box">
             <div class="widget-content ">
+              @if($errors->has('error'))
+              <div class="alert alert-danger">
+                  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                  {{$errors->first('error')}}
+              </div>
+              @endif
+              @if($errors->has('success'))
+              <div class="alert alert-success">
+                  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                  {{$errors->first('success')}}
+              </div>
+              @endif
               <table class="table table-bordered table-striped with-check">
                 <thead>
                   <tr>

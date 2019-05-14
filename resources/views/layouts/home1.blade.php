@@ -65,7 +65,7 @@
                         <nav class="classy-navbar justify-content-between" id="vizewNav">
 
                             <!-- Nav brand -->
-                            <a href="index" class="nav-brand"><h2><?= $data['contact'][0]->brand_name ?></h2></a>
+                            <a href="<?= url('/') ?>" class="nav-brand"><h2><?= $data['contact'][0]->brand_name ?></h2></a>
 
                             <!-- Navbar Toggler -->
                             <div class="classy-navbar-toggler">
@@ -155,7 +155,7 @@
                                                 <img src="<?= $value->image ?>" alt="">
                                             </div>
                                             <div class="post-content">
-                                                <a href="<?= url('home/post/'.$value->id) ?>" class="post-title"><?= $value->name ?></a>
+                                                <a href="<?= url('/post/'.$value->id) ?>" class="post-title"><?= $value->name ?></a>
                                                 <div class="post-meta d-flex justify-content-between">
                                                     <a href="#"><i class="fa fa-eye" aria-hidden="true"></i> <?= $value->view ?></a>
                                                 </div>

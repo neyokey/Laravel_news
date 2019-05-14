@@ -45,7 +45,7 @@
               <label class="control-label">Content</label>
               <div class="controls">
                 <div class="input text required">
-                    <textarea type="text" name="content" class="textarea_editor span20" style = "min-height: 500px" id="editor"  required="required">a</textarea>
+                    <textarea type="text" name="content" class="textarea_edito span20" style = "min-height: 500px" id="editor"  required="required"></textarea>
                 </div>
               </div>
             </div>
@@ -53,7 +53,7 @@
               <label class="control-label">View count</label>
               <div class="controls">
                   <div class="input text required">
-                      <input type="text" name="view" class="span6"  required="required" maxlength="50" id="view" />
+                      <input type="text" name="view" class="span6"  value="0" required="required" maxlength="50" id="view" />
                   </div>
               </div>
             </div>

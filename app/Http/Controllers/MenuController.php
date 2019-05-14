@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\MessageBag;
 
 class MenuController extends Controller
 {
@@ -21,8 +22,21 @@ class MenuController extends Controller
         $name = 'menu';
         if($request::post() != null)
         {
-            DB::table('menu')->insert(['name' => $request::post()['name'],'link' => $request::post()['link'],'position' => $request::post()['position']]);
-            return redirect()->action('MenuController@index');
+            $menu = DB::table('menu')->where('position',$request::post()['position'])->get();
+            if($menu->isEmpty())
+            {
+                if(DB::table('menu')->insert(['name' => $request::post()['name'],'link' => $request::post()['link'],'position' => $request::post()['position']]))
+                    $message = new MessageBag(['success' => 'Add menu successfully']);
+                else
+                    $message = new MessageBag(['error' => 'Add menu error']);
+                return redirect()->action('MenuController@index')->withInput()->withErrors($message);
+            }
+            else
+            {
+                $message = new MessageBag(['position' => 'Duplicate position']);
+                return redirect()->back()->withInput()->withErrors($message);
+            }
+            
         }
         return view('admin.menu.add',['name' => $name]);
     }
@@ -43,6 +57,8 @@ class MenuController extends Controller
                 DB::table('menu')
                     ->where('id', $id)
                     ->update(['name' => $request::post()['name'],'link' => $request::post()['link'],'position' => $request::post()['position']]);
+                $message = new MessageBag(['success' => 'Edit menu successfully']);
+                return redirect()->action('MenuController@index')->withInput()->withErrors($message);
             }
             else
             {
@@ -56,7 +72,10 @@ class MenuController extends Controller
                 DB::table('menu')
                     ->where('position', '-1')
                     ->update(['position' => $old_position]);
+                $message = new MessageBag(['success' => 'Edit menu successfully']);
+                return redirect()->action('MenuController@index')->withInput()->withErrors($message);
             }
+            $message = new MessageBag(['error' => 'Edit menu error']);
 	        return redirect()->action('MenuController@index');
     	}
     	
@@ -64,21 +83,33 @@ class MenuController extends Controller
     }
     public function deactivated($id)
     {
-        DB::table('menu')
-            ->where('id', $id)
-            ->update(['status' => 0]);
-        return redirect()->back();
+        if(DB::table('menu')->where('id', $id)->update(['status' => 0]))
+            $message = new MessageBag(['success' => 'Change stastus successfully']);
+        else
+            $message = new MessageBag(['error' => 'Change stastus error']);
+        return redirect()->back()->withInput()->withErrors($message);
     }
     public function activated($id)
     {
-        DB::table('menu')
-            ->where('id', $id)
-            ->update(['status' => 1]);
-        return redirect()->back();
+        if(DB::table('menu')->where('id', $id)->update(['status' => 1]))
+            $message = new MessageBag(['success' => 'Change stastus successfully']);
+        else
+            $message = new MessageBag(['error' => 'Change stastus error']);
+        return redirect()->back()->withInput()->withErrors($message);
     }
     public function delete($id)
     {
-        DB::table('menu')->where('id', $id)->delete();
-        return redirect()->back();
+        if($id == '19' )
+        {
+            $message = new MessageBag(['error' => 'Cant delete this menu']);
+        }
+        else
+        {
+            if(DB::table('menu')->where('id', $id)->delete())
+                $message = new MessageBag(['success' => 'Delete menu successfully']);
+            else
+                $message = new MessageBag(['error' => 'Delete menu error']);
+        }
+        return redirect()->back()->withInput()->withErrors($message);
     }
 }

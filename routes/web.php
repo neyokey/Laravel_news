@@ -57,7 +57,7 @@ Route::group(['prefix' => '/'], function () {
         Route::get('deactivated/{id}', 'CommentController@deactivated');
         Route::get('activated/{id}', 'CommentController@activated');
         Route::get('denied/{id}', 'CommentController@denied');
-        Route::match(['get', 'post'],'add', 'CommentController@add');
+        Route::match(['get', 'post'],'add/{id}', 'CommentController@add');
         Route::match(['get', 'post'],'view/{id}', 'CommentController@view');
         });
     Route::group(['prefix' => '/contact/'], function () {

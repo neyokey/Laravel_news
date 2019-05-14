@@ -18,7 +18,7 @@ class HomeController extends Controller
         $contact = DB::table('contact')->get();
         $menu = DB::table('menu')->where('status','1')->get();
         $submenu = DB::table('submenu')->where('status','1')->orderBy('position')->get();
-        $mostview_post = DB::table('post')->where('status','1')->orderBy('view','desc')->select('id','name','view','insert_time','image')->get();
+        $mostview_post = DB::table('post')->where('status','1')->orderBy('view','desc')->select('id','name','view','insert_time','image')->get()->take(5);
         $data = array(
             'contact' => $contact,
             'menu' => $menu,
@@ -85,6 +85,10 @@ class HomeController extends Controller
             ->join('user', 'post.user_id', '=', 'user.id')
             ->select('post.*', 'user.name as username')
             ->get();
-        return view('home.post',['name' => $name, 'post' => $post]);
+        $view = $post[0]->view + 1;
+        DB::table('post')->where('id', $id)
+                ->update(['view' => $view]);
+        $comment = DB::table('comment')->where('post_id',$id)->get();
+        return view('home.post',['name' => $name, 'post' => $post,'comment' => $comment]);
     }
 }

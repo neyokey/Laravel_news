@@ -32,23 +32,24 @@ class MessageController extends Controller
     public function view($id = null)
     {
         $name = 'message';
+        DB::table('message')->where('id', $id)->update(['status' => 1]);
         $message = DB::table('message')->where('id', $id)->get();
         return view('admin.message.view',['message' => $message,'name' => $name]);
     }
     public function deactivated($id)
     {
         if(DB::table('message')->where('id', $id)->update(['status' => 0]))
-            $message = new MessageBag(['successlogin' => 'Logged in successfully']);
+            $message = new MessageBag(['success' => 'Change stastus successfully']);
         else
-            $message = new MessageBag(['errorlogin' => 'Email or password is incorrect']);
+            $message = new MessageBag(['error' => 'Change stastus error']);
         return redirect()->back()->withInput()->withErrors($message);
     }
     public function activated($id)
     {
         if(DB::table('message')->where('id', $id)->update(['status' => 1]))
-            $message = new MessageBag(['success' => 'Logged in successfully']);
+            $message = new MessageBag(['success' => 'Change stastus successfully']);
         else
-            $message = new MessageBag(['error' => 'Email or password is incorrect']);
+            $message = new MessageBag(['error' => 'Change stastus error']);
         return redirect()->back()->withInput()->withErrors($message);
     }
 }

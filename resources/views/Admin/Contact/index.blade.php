@@ -18,6 +18,18 @@
             <div class="widget-content nopadding">
               <ul class="recent-users"> 
                 <li>
+                  @if($errors->has('error'))
+                  <div class="alert alert-danger">
+                      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                      {{$errors->first('error')}}
+                  </div>
+                  @endif
+                  @if($errors->has('success'))
+                  <div class="alert alert-success">
+                      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                      {{$errors->first('success')}}
+                  </div>
+                  @endif
                   <a href="<?= url('/admin/contact/edit/1'); ?>" class="btn btn-success btn-mini">Edit</a>
                 </li>
               </ul>
