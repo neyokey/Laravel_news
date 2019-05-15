@@ -30,19 +30,19 @@
         </div>
         <p>Sent we some message</p>
         <div class="contact-form-area mt-50">
-            @if($errors->has('failSent'))
+            @if($errors->has('fail'))
             <div class="alert alert-danger">
                 <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                {{$errors->first('failSent')}}
+                {{$errors->first('fail')}}
             </div>
             @endif
-            @if($errors->has('successSent'))
+            @if($errors->has('success'))
             <div class="alert alert-success">
                 <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                {{$errors->first('successSent')}}
+                {{$errors->first('success')}}
             </div>
             @endif
-            <form action="<?= url('admin/message/add')?>" method="post">
+            <form action="<?= url('/add_message')?>" method="post">
             @csrf
                 <div class="form-group">
                     <label for="name">Name</label>

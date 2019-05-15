@@ -60,6 +60,7 @@
                     <th>ID</th>
                     <th>Name</th>
                     <th>Email</th>
+                    <th>Image</th>
                     <th>Type</th>
                     <th>Status</th>
                     <th>Action</th>
@@ -73,6 +74,7 @@
                     <td><?= $value->id ?></td>
                     <td><?= $value->name ?></td>
                     <td><?= $value->email ?></td>
+                    <td><image width='50px' height='50px' src='<?= url($value->image) ?>'></image></td>
                     <td><?= $value->typename ?></td>
                     <?php
                         if($value->status == 0)

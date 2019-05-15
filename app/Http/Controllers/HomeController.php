@@ -16,7 +16,7 @@ class HomeController extends Controller
 {
     public function __construct() {
         $contact = DB::table('contact')->get();
-        $menu = DB::table('menu')->where('status','1')->get();
+        $menu = DB::table('menu')->where('status','1')->orderBy('position')->get();
         $submenu = DB::table('submenu')->where('status','1')->orderBy('position')->get();
         $mostview_post = DB::table('post')->where('status','1')->orderBy('view','desc')->select('id','name','view','insert_time','image')->get()->take(5);
         $data = array(
@@ -31,7 +31,7 @@ class HomeController extends Controller
     public function index()
     {
         $name = 'home';
-        $post = DB::table('post')->where('status','1')->select('id','name','view','insert_time','image')->get();
+        $post = DB::table('post')->where('status','1')->orderBy('id','desc')->select('id','name','view','insert_time','image')->get();
         return view('home.index',['name' => $name,'post' => $post]);
     }
     public function login(Request $request )
@@ -75,20 +75,61 @@ class HomeController extends Controller
     }
     public function contact()
     {
+        $breadcrumb= 'Contact';
         $name = 'contact';
-        return view('home.contact',['name' => $name]);
+        return view('home.contact',['name' => $name,'breadcrumb' => $breadcrumb]);
     }
     public function post($id = null)
     {
         $name = 'post';
-        $post = DB::table('post')->where('post.id',$id)
-            ->join('user', 'post.user_id', '=', 'user.id')
-            ->select('post.*', 'user.name as username')
+        $post = DB::table('post')->where('id',$id)
             ->get();
         $view = $post[0]->view + 1;
         DB::table('post')->where('id', $id)
                 ->update(['view' => $view]);
-        $comment = DB::table('comment')->where('post_id',$id)->get();
-        return view('home.post',['name' => $name, 'post' => $post,'comment' => $comment]);
+        $post = DB::table('post')->where('post.id',$id)
+            ->join('user', 'post.user_id', '=', 'user.id')
+            ->select('post.*', 'user.name as username')
+            ->get();
+        $breadcrumb= $post[0]->name;
+        $comment = DB::table('comment')->where('post_id',$id)->where('status','1')->get();
+        return view('home.post',['name' => $name, 'post' => $post,'comment' => $comment,'breadcrumb' => $breadcrumb]);
+    }
+
+    public function add_comment($id = null,Request $request)
+    {
+        if($request::post() != null)
+        {
+            if(Auth::check())
+            {
+                if(DB::table('comment')->insert(['name' => Auth::user()->name,'email' => Auth::user()->email,'content' => $request::post()['content'],'image' => Auth::user()->image,'post_id' => $id]))
+                    $message = new MessageBag(['success' => 'Comment sent successfully and waiting for moderation']);
+                else
+                    $message = new MessageBag(['fail' => 'Comment sent failed']);
+                return redirect()->back()->withInput()->withErrors($message);
+            }
+            else
+            {
+                if(DB::table('comment')->insert(['name' => $request::post()['name'],'email' => $request::post()['email'],'content' => $request::post()['content'],'post_id' => $id]))
+                    $message = new MessageBag(['success' => 'Comment sent successfully and waiting for moderation']);
+                else
+                    $message = new MessageBag(['fail' => 'Comment sent failed']);
+                return redirect()->back()->withInput()->withErrors($message);
+            }
+        }
+        return redirect()->back();
+    }
+    public function add_message(Request $request)
+    {
+        if($request::post() != null)
+        {
+            if(DB::table('message')->insert(['name' => $request::post()['name'],'email' => $request::post()['email'],'content' => $request::post()['content']]))
+                $message = new MessageBag(['success' => 'Message sent successfully']);
+                
+            else
+                $message = new MessageBag(['fail' => 'Message sent failed']);
+            return redirect()->back()->withInput()->withErrors($message);
+        }
+        return redirect()->back();
     }
 }

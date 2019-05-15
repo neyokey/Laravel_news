@@ -10,24 +10,14 @@ use Illuminate\Support\MessageBag;
 
 class MessageController extends Controller
 {
+    public function __construct() {
+        $this->middleware('auth');
+    }
     public function index()
     {
         $name = 'message';
-        $message = DB::table('message')->get();
+        $message = DB::table('message')->orderBy('id','desc')->get();
         return view('admin.message.index',['message' => $message,'name' => $name]);
-    }
-    public function add(Request $request)
-    {
-        if($request::post() != null)
-        {
-            if(DB::table('message')->insert(['name' => $request::post()['name'],'email' => $request::post()['email'],'content' => $request::post()['content']]))
-                $message = new MessageBag(['successSent' => 'Message sent successfully']);
-                
-            else
-                $message = new MessageBag(['failSent' => 'Message sent failed']);
-            return redirect()->back()->withInput()->withErrors($message);
-        }
-        return redirect()->back();
     }
     public function view($id = null)
     {

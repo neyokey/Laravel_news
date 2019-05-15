@@ -11,6 +11,9 @@ use Illuminate\Support\MessageBag;
 
 class UsertypeController extends Controller
 {
+    public function __construct() {
+        $this->middleware('auth');
+    }
 	public function index()
 	{
  		$name = 'usertype';

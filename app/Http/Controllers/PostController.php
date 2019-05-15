@@ -12,6 +12,9 @@ use Illuminate\Support\MessageBag;
 
 class PostController extends Controller
 {
+    public function __construct() {
+        $this->middleware('auth');
+    }
 	public function index($id= null,Request $request)
 	{
         $name = 'post';

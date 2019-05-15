@@ -120,6 +120,10 @@
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="#"><i class="fa fa-home" aria-hidden="true"></i> Home</a></li>
+                                <?php 
+                                    if(isset($breadcrumb))
+                                        echo '<li class="breadcrumb-item" >'.$breadcrumb.'</li>';
+                                ?>
                             </ol>
                         </nav>
                     </div>
@@ -157,7 +161,7 @@
                                             <div class="post-content">
                                                 <a href="<?= url('/post/'.$value->id) ?>" class="post-title"><?= $value->name ?></a>
                                                 <div class="post-meta d-flex justify-content-between">
-                                                    <a href="#"><i class="fa fa-eye" aria-hidden="true"></i> <?= $value->view ?></a>
+                                                    <a href="#"></i> <?= $value->insert_time ?></a>
                                                 </div>
                                             </div>
                                         </div>

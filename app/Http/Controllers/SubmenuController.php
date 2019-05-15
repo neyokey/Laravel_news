@@ -11,6 +11,9 @@ use Illuminate\Support\MessageBag;
 
 class SubmenuController extends Controller
 {
+    public function __construct() {
+        $this->middleware('auth');
+    }
 	public function index($id = null)
 	{
  		$name = 'submenu';

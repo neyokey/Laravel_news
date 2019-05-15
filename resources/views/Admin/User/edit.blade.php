@@ -30,8 +30,19 @@
                             <label class="control-label">Name</label>
                             <div class="controls">
                                 <div class="input text required">
-                                    <input type="text" name="name" class="span6" value="<?= $user[0]->name?>" required="required" maxlength="50" id="name" />
+                                    <input type="text" name="name" class="span6" value="<?= $user[0]->name?>" required="required" id="name" />
                                 </div>
+                            </div>
+                        </div>
+                        <div class="control-group ">
+                            <label class="control-label">Image</label>
+                            <div class="controls">
+                                <div class="input text required">
+                                    <input type="file" name="image" class="span3" id="image" />
+                                </div>
+                                @if($errors->has('image'))
+                                    <p style="color:red">{{$errors->first('image')}}</p>
+                                @endif
                             </div>
                         </div>
                         <div class="control-group ">

@@ -35,6 +35,17 @@
                             </div>
                         </div>
                         <div class="control-group ">
+                            <label class="control-label">Image</label>
+                            <div class="controls">
+                                <div class="input text required">
+                                    <input type="file" name="image" class="span3" id="image" />
+                                </div>
+                                @if($errors->has('image'))
+                                    <p style="color:red">{{$errors->first('image')}}</p>
+                                @endif
+                            </div>
+                        </div>
+                        <div class="control-group ">
                             <label class="control-label">Email</label>
                             <div class="controls">
                                 <div class="input text required">

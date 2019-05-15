@@ -14,14 +14,18 @@
 Route::group(['prefix' => '/'], function () {
 	Route::get('', 'HomeController@index');
     Route::get('index', 'HomeController@index');
+    Route::get('home', 'HomeController@index');
     Route::match(['get', 'post'],'login', 'HomeController@login');
     Route::match(['get', 'post'],'contact', 'HomeController@contact');
     Route::get('logout', 'HomeController@logout');
     Route::get('post/{id}', 'HomeController@post');
+    Route::match(['get', 'post'],'add_comment/{id}', 'HomeController@add_comment');
+    Route::match(['get', 'post'],'add_message', 'HomeController@add_message');
+
     Route::group(['prefix' => 'admin/'], function () {
-        
     Route::get('', 'AdminController@index');
     Route::get('index', 'AdminController@index');
+
     Route::group(['prefix' => '/user/'], function () {
         Route::get('', 'UserController@index');
         Route::get('deactivated/{id}', 'UserController@deactivated');
@@ -29,6 +33,7 @@ Route::group(['prefix' => '/'], function () {
     	Route::match(['get', 'post'],'add', 'UserController@add');
     	Route::match(['get', 'post'],'edit/{id}', 'UserController@edit');
         });
+
     Route::group(['prefix' => '/usertype/'], function () {
         Route::get('', 'UsertypeController@index');
         Route::get('deactivated/{id}', 'UsertypeController@deactivated');
@@ -36,6 +41,7 @@ Route::group(['prefix' => '/'], function () {
         Route::match(['get', 'post'],'add', 'UsertypeController@add');
         Route::match(['get', 'post'],'edit/{id}', 'UsertypeController@edit');
         });
+
     Route::group(['prefix' => '/post/'], function () {
         Route::get('', 'PostController@index');
         Route::get('deactivated/{id}', 'PostController@deactivated');
@@ -45,6 +51,7 @@ Route::group(['prefix' => '/'], function () {
         Route::match(['get', 'post'],'edit/{id}', 'PostController@edit');
         Route::match(['get', 'post'],'view/{id}', 'PostController@view');
         });
+
     Route::group(['prefix' => '/posttype/'], function () {
         Route::get('', 'PosttypeController@index');
         Route::get('deactivated/{id}', 'PosttypeController@deactivated');
@@ -52,26 +59,28 @@ Route::group(['prefix' => '/'], function () {
         Route::match(['get', 'post'],'add', 'PosttypeController@add');
         Route::match(['get', 'post'],'edit/{id}', 'PosttypeController@edit');
         });
+
     Route::group(['prefix' => '/comment/'], function () {
         Route::get('', 'CommentController@index');
         Route::get('deactivated/{id}', 'CommentController@deactivated');
         Route::get('activated/{id}', 'CommentController@activated');
         Route::get('denied/{id}', 'CommentController@denied');
-        Route::match(['get', 'post'],'add/{id}', 'CommentController@add');
         Route::match(['get', 'post'],'view/{id}', 'CommentController@view');
         });
+
     Route::group(['prefix' => '/contact/'], function () {
         Route::get('', 'ContactController@index');
         Route::match(['get', 'post'],'edit/{id}', 'ContactController@edit');
         });
+
     Route::group(['prefix' => '/message/'], function () {
         Route::get('', 'MessageController@index');
         Route::get('deactivated/{id}', 'MessageController@deactivated');
         Route::get('activated/{id}', 'MessageController@activated');
         Route::get('denied/{id}', 'MessageController@denied');
-        Route::match(['get', 'post'],'add', 'MessageController@add');
         Route::match(['get', 'post'],'view/{id}', 'MessageController@view');
         });
+
     Route::group(['prefix' => '/menu/'], function () {
         Route::get('', 'MenuController@index');
         Route::get('deactivated/{id}', 'MenuController@deactivated');
