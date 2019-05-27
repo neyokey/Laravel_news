@@ -11,9 +11,9 @@
         </div>
 
             <blockquote class="vizew-blockquote mb-15">
-                <h5>Address: <?= $data['contact'][0]->address ?></h5>
-                <h5>Phone: <?= $data['contact'][0]->phone ?></h5>
-                <h5>Email: <?= $data['contact'][0]->email ?></h5>
+                <h5 style="color: white">Address: <?= $data['contact'][0]->address ?></h5>
+                <h5 style="color: white">Phone: <?= $data['contact'][0]->phone ?></h5>
+                <h5 style="color: white">Email: <?= $data['contact'][0]->email ?></h5>
                 <div class="post-tags mt-30">
                     <ul>
                         <li><a href="<?= $data['contact'][0]->link_fb ?>" class="facebook"><i class="fa fa-facebook"></i></a></li>

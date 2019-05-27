@@ -47,7 +47,7 @@
                                     if(Auth::check())
                                         echo '';
                                     else
-                                        echo '<a href="login" class="login-btn"><i class="fa fa-user" aria-hidden="true">';
+                                        echo '<a href='.url("/login").' class="login-btn"><i class="fa fa-user" aria-hidden="true">';
                                 ?>
                                 </i></a>
                             </div>
@@ -65,7 +65,7 @@
                         <nav class="classy-navbar justify-content-between" id="vizewNav">
 
                             <!-- Nav brand -->
-                            <a href="<?= url('/') ?>" class="nav-brand"><h2><?= $data['contact'][0]->brand_name ?></h2></a>
+                            <a href="<?= url('/') ?>" class="nav-brand"><h2 style="color: white"><?= $data['contact'][0]->brand_name ?></h2></a>
 
                             <!-- Navbar Toggler -->
                             <div class="classy-navbar-toggler">
@@ -181,8 +181,8 @@
             <div class="container">
                 <div class="row">
                     <div class="col-12 col-sm-12 col-xl-12">
-                        <div class="footer-widget mb-70 text-right">
-                            <h6 class="widget-title">Our Address</h6>
+                        <div class="footer-widget mb-20 text-right">
+                            <h6 class="widget-title" style="color: white">Our Address</h6>
                             <!-- Contact Address -->
                             <div class="contact-address  text-right">
                                 <p><?= $data['contact'][0]->address ?></p>

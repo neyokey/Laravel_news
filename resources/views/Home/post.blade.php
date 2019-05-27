@@ -4,7 +4,7 @@
 
 @section('content')
 
-<div class="col-12 col-lg-8 col-xl-7">
+<div class="col-12 col-lg-8 col-xl-8">
     <div class="post-details-content">
         <!-- Blog Content -->
         <div class="blog-content">

@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="<?= url("/css/admin/bootstrap.min.css"); ?>">
+  <link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css" rel="stylesheet">
   <link rel="stylesheet" href="<?= url("/css/admin/grid.css"); ?>">
   <link rel="stylesheet" href="<?= url("/css/admin/bootstrap-responsive.min.css"); ?>">
   <link rel="stylesheet" href="<?= url("/css/admin/colorpicker.css"); ?>">
@@ -13,11 +14,11 @@
   <link rel="stylesheet" href="<?= url("/css/admin/select2.css"); ?>">
   <link rel="stylesheet" href="<?= url("/css/admin/matrix-style.css"); ?>">
   <link rel="stylesheet" href="<?= url("/css/admin/matrix-media.css"); ?>">
-  <link rel="stylesheet" href="<?= url("/css/admin/bootstrap-wysihtml5.css"); ?>">
   <link rel="stylesheet" href="<?= url("/css/admin/font-awesome.css"); ?>">
   <link rel="stylesheet" href="<?= url("/css/admin/admin.css"); ?>">
   <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,800' rel='stylesheet' type='text/css'>
 
+<link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote.css" rel="stylesheet">
   <script src="<?= url("/js/admin/jquery.min.js"); ?>"></script>
 </head>
 <body>
@@ -101,11 +102,13 @@
   <script src="<?= url("/js/admin/bootstrap-wysihtml5.js"); ?>"></script>
   <script src="<?= url("/js/admin/jquery.peity.min.js"); ?>"></script>
   <script src="<?= url("/js/admin/jquery.uniform.js"); ?>"></script>
-
-</body>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote.js"></script>
 <script>
-  $('.textarea_editor').wysihtml5();
-  $('.textarea_editor1').wysihtml5();
-</script>
+      $('#summernote').summernote({ 
+        height: 400
+      });
+    </script>
+</body>
+
 
 

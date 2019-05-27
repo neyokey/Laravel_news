@@ -84,6 +84,10 @@ class HomeController extends Controller
         $name = 'post';
         $post = DB::table('post')->where('id',$id)
             ->get();
+        if($post->isEmpty())
+        {
+            return Redirect::to(url('/'));
+        }
         $view = $post[0]->view + 1;
         DB::table('post')->where('id', $id)
                 ->update(['view' => $view]);

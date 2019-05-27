@@ -7,7 +7,7 @@
   <div id="content-header">
       <div id="breadcrumb"> 
           <a href="<?= url("/admin/"); ?>" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a>
-          <a href="<?= url("/admin/post/"); ?>">Menu </a>
+          <a href="<?= url("/admin/post/"); ?>">Post </a>
           <a href="" class="current">Add </a>
       </div>
   </div>
@@ -45,7 +45,7 @@
               <label class="control-label">Content</label>
               <div class="controls">
                 <div class="input text required">
-                    <textarea type="text" name="content" class="textarea_edito span20" style = "min-height: 500px" id="editor"  required="required"></textarea>
+                    <textarea name="content" id="summernote" required="required"></textarea>
                 </div>
               </div>
             </div>

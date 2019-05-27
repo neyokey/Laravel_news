@@ -45,7 +45,7 @@
               <label class="control-label">Content</label>
               <div class="controls">
                 <div class="input text required">
-                    <textarea type="text" name="content" class="textarea_edito span20" style = "min-height: 500px" id="editor"  required="required"><?= $post[0]->content?></textarea>
+                    <textarea name="content" id="summernote" required="required"><?= $post[0]->content?></textarea>
                 </div>
               </div>
             </div>

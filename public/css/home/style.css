@@ -16,7 +16,7 @@
 body {
   font-family: "Roboto", sans-serif;
   font-size: 14px;
-  background-color: #222627;
+  background-color: #ffffff;
   color: #a6a6a6; }
 
 h1,
@@ -26,7 +26,7 @@ h4,
 h5,
 h6 {
   font-family: "Roboto", sans-serif;
-  color: #ffffff;
+  color: #0d0c0c;
   line-height: 1.3;
   font-weight: 500; }
 
@@ -34,7 +34,6 @@ p {
   font-family: "Roboto", sans-serif;
   color: #a6a6a6;
   font-size: 14px;
-  line-height: 2;
   font-weight: 400; }
 
 a,
@@ -331,6 +330,7 @@ input:focus {
 
 .top-header-area {
   position: relative;
+  background-color: #ffffff;
   z-index: 1;
   width: 100%;
   height: 50px; }
@@ -643,7 +643,7 @@ input:focus {
     background-color: transparent;
     border-radius: 0; }
     .vizew-breadcrumb .breadcrumb .breadcrumb-item {
-      color: #a6a6a6;
+      color: #343a40;
       font-size: 16px;
       font-weight: 400; }
       @media only screen and (min-width: 992px) and (max-width: 1199px) {
@@ -656,7 +656,7 @@ input:focus {
         .vizew-breadcrumb .breadcrumb .breadcrumb-item {
           font-size: 12px; } }
       .vizew-breadcrumb .breadcrumb .breadcrumb-item a {
-        color: #fff;
+        color: #343a40;
         font-size: 16px;
         font-weight: 400; }
         @media only screen and (min-width: 992px) and (max-width: 1199px) {
@@ -718,7 +718,7 @@ input:focus {
     z-index: 1;
     padding-left: 20px; }
     .single-blog-post .post-content .post-title {
-      color: #ffffff;
+      color: #343a40;
       margin-bottom: 5px;
       display: block;
       font-size: 16px;
@@ -736,10 +736,10 @@ input:focus {
         color: #db4437; }
     .single-blog-post .post-content .post-meta a {
       display: inline-block;
-      color: #595959;
+      color: #343a40;
       font-size: 12px; }
       .single-blog-post .post-content .post-meta a:hover, .single-blog-post .post-content .post-meta a:hover {
-        color: #ffffff; }
+        color: #343a40; }
   .single-blog-post.style-2 {
     margin-bottom: 0; }
     .single-blog-post.style-2 .post-thumbnail {
@@ -769,9 +769,10 @@ input:focus {
     .single-blog-post.style-2 .post-content {
       position: relative;
       z-index: 1;
+      color: #343a40;
       padding-left: 20px; }
       .single-blog-post.style-2 .post-content .post-title {
-        color: #ffffff;
+        color: #343a40;
         margin-bottom: 10px;
         display: block;
         font-weight: 700;
@@ -808,7 +809,7 @@ input:focus {
           max-width: 100px;
           width: 100px; } }
     .single-blog-post.style-3 .post-content .post-title {
-      color: #ffffff;
+      color: #343a40;
       margin-bottom: 15px;
       display: block;
       font-weight: 700;
@@ -886,7 +887,7 @@ input:focus {
     .single-feature-post.video-post .post-content .post-title {
       font-size: 24px;
       display: block;
-      color: #ffffff;
+      color: #343a40;
       margin-bottom: 10px; }
       @media only screen and (min-width: 768px) and (max-width: 991px) {
         .single-feature-post.video-post .post-content .post-title {
@@ -1242,7 +1243,7 @@ input:focus {
     margin-top: 20px; }
     .post-details-content .post-content .post-title {
       display: block;
-      color: #ffffff;
+      color: #343a40;
       margin-bottom: 15px;
       font-size: 24px; }
       @media only screen and (min-width: 768px) and (max-width: 991px) {
@@ -1737,7 +1738,7 @@ input:focus {
   position: relative;
   z-index: 1;
   background-color: #191c1d;
-  padding-top: 70px; }
+  padding-top: 20px; }
   .footer-area .footer-widget {
     position: relative;
     z-index: 1; }
