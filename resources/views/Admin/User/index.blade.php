@@ -103,6 +103,7 @@
                           ?>
                 </tbody>
               </table>
+              {{ $user->render("pagination::admin") }}
             </div>
           </div>
         </div>

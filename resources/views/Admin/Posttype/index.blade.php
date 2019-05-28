@@ -78,6 +78,7 @@
                           ?>
                 </tbody>
               </table>
+              {{ $posttype->render("pagination::admin") }}
             </div>
           </div>
         </div>

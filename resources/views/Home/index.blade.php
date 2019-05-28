@@ -42,7 +42,9 @@
                         <?php
                     }
                 ?>
+
             </div>
+            {{ $post->render("pagination::home") }}
         </div>
     </div>
 @endsection

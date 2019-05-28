@@ -112,6 +112,7 @@
                   </tr>
                 </tbody>
               </table>
+              {{ $post->render("pagination::admin") }}
             </div>
           </div>
         </div>

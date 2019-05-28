@@ -22,36 +22,6 @@
 
         <!-- ##### Header Area Start ##### -->
         <header class="header-area">
-            <!-- Top Header Area -->
-            <div class="top-header-area">
-                <div class="container">
-                    <div class="row align-items-center">
-                        <div class="col-12 col-md-6">
-                        </div>
-                        <div class="col-12 col-md-6">
-                            <div class="top-meta-data d-flex align-items-center justify-content-end">
-                                <!-- Top Social Info -->
-                                <div class="top-social-info">
-                                    <a href="<?= $data['contact'][0]->link_fb ?>"><i class="fa fa-facebook"></i></a>
-                                    <a href="<?= $data['contact'][0]->link_ins ?>"><i class="fa fa-instagram"></i></a>
-                                    <a href="<?= $data['contact'][0]->link_yt ?>"><i class="fa fa-youtube-play"></i></a>
-                                </div>
-                                <!-- Top Search Area -->
-                                <div class="top-search-area">
-                                    <form action="index" method="post">
-                                        <input type="search" name="top-search" id="topSearch" placeholder="Search...">
-                                        <button type="submit" class="btn"><i class="fa fa-search" aria-hidden="true"></i></button>
-                                    </form>
-                                </div>
-                                <!-- Login -->
-                                <a href="login" class="login-btn"><i class="fa fa-user" aria-hidden="true"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Navbar Area -->
             <div class="vizew-main-menu" id="sticker">
                 <div class="classy-nav-container breakpoint-off">
                     <div class="container">
@@ -60,7 +30,7 @@
                         <nav class="classy-navbar justify-content-between" id="vizewNav">
 
                             <!-- Nav brand -->
-                            <a href="index" class="nav-brand"><h2 style="color: white"><?= $data['contact'][0]->brand_name ?></h2></a>
+                            <a href="<?= url('/') ?>" class="nav-brand"><h2 style="color: white"><?= $data['contact'][0]->brand_name ?></h2></a>
 
                             <!-- Navbar Toggler -->
                             <div class="classy-navbar-toggler">
@@ -99,6 +69,14 @@
                                                 }
                                             }
                                         ?>
+                                        <li>
+                                            <?php 
+                                                if(Auth::check())
+                                                    echo '';
+                                                else
+                                                    echo '<a href='.url("/login").'><i class="fa fa-user" aria-hidden="true"></i></a>';
+                                            ?>
+                                        </li>
                                     </ul>
                                 </div>
                                 <!-- Nav End -->

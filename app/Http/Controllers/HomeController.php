@@ -31,7 +31,7 @@ class HomeController extends Controller
     public function index()
     {
         $name = 'home';
-        $post = DB::table('post')->where('status','1')->orderBy('id','desc')->select('id','name','view','insert_time','image')->get();
+        $post = DB::table('post')->where('status','1')->orderBy('id','desc')->select('id','name','view','insert_time','image')->paginate(10);
         return view('home.index',['name' => $name,'post' => $post]);
     }
     public function login(Request $request )

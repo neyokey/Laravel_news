@@ -17,7 +17,7 @@ class MenuController extends Controller
 	public function index()
 	{
  		$name = 'menu';
- 		$menu = DB::table('menu')->orderBy('position')->get();
+ 		$menu = DB::table('menu')->orderBy('position')->paginate(7);
         return view('admin.menu.index',['menu' => $menu,'name' => $name]);
     }
     public function add(Request $request)

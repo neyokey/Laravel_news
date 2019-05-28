@@ -17,7 +17,7 @@ class UsertypeController extends Controller
 	public function index()
 	{
  		$name = 'usertype';
- 		$usertype = DB::table('usertype')->get();
+ 		$usertype = DB::table('usertype')->paginate(7);
         return view('admin.usertype.index',['usertype' => $usertype,'name' => $name]);
     }
     public function add(Request $request)

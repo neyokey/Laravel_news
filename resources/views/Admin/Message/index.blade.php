@@ -94,6 +94,7 @@
                           ?>
                 </tbody>
               </table>
+              {{ $message->render("pagination::admin") }}
             </div>
           </div>
         </div>

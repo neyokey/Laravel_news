@@ -7,7 +7,7 @@
   <div id="content-header">
       <div id="breadcrumb"> 
           <a href="<?= url("/admin/"); ?>" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a>
-          <a href="<?= url("/admin/post/"); ?>">Menu </a>
+          <a href="<?= url("/admin/post/"); ?>">Post </a>
           <a href="" class="current">Edit </a>
       </div>
   </div>

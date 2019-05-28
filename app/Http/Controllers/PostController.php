@@ -22,7 +22,8 @@ class PostController extends Controller
             ->join('posttype', 'post.posttype_id', '=', 'posttype.id')
             ->join('user', 'post.user_id', '=', 'user.id')
             ->select('post.*', 'posttype.name as postypename','user.name as username')
-            ->get();
+            ->orderBy('id','desc')
+            ->paginate(7);
         return view('admin.post.index',['post' => $post,'name' => $name]);
     }
     public function view($id= null)

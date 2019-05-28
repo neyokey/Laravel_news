@@ -100,6 +100,7 @@
                           ?>
                 </tbody>
               </table>
+              {{ $comment->render("pagination::admin") }}
             </div>
           </div>
         </div>

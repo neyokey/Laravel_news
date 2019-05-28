@@ -21,7 +21,7 @@ class UserController extends Controller
  		$user = DB::table('user')
             ->join('usertype', 'user.usertype_id', '=', 'usertype.id')
             ->select('user.*', 'usertype.name as typename')
-            ->get();
+            ->paginate(7);
         return view('admin.user.index',['user' => $user,'name' => $name]);
     }
     public function add(Request $request)

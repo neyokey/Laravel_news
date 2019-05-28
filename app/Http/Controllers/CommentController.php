@@ -21,7 +21,7 @@ class CommentController extends Controller
             ->join('post', 'comment.post_id', '=', 'post.id')
             ->select('comment.*', 'post.name as postname')
             ->orderBy('id','desc')
-            ->get();
+            ->paginate(7);
         return view('admin.comment.index',['comment' => $comment,'name' => $name]);
     }
     public function view($id = null)

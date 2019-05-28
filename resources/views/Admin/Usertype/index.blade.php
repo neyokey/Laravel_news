@@ -78,6 +78,7 @@
                           ?>
                 </tbody>
               </table>
+              {{ $usertype->render("pagination::admin") }}
             </div>
           </div>
         </div>

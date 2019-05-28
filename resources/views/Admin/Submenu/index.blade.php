@@ -89,6 +89,7 @@
                   </tr>
                 </tbody>
               </table>
+              {{ $submenu->render("pagination::admin") }}
             </div>
           </div>
         </div>

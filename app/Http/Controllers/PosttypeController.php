@@ -17,7 +17,7 @@ class PosttypeController extends Controller
 	public function index()
 	{
  		$name = 'posttype';
- 		$posttype = DB::table('posttype')->get();
+ 		$posttype = DB::table('posttype')->paginate(7);
         return view('admin.posttype.index',['posttype' => $posttype,'name' => $name]);
     }
     public function add(Request $request)

@@ -20,7 +20,7 @@ class SubmenuController extends Controller
  		$submenu = DB::table('submenu')->where('menu_id', $id)
             ->join('menu', 'submenu.menu_id', '=', 'menu.id')
             ->select('submenu.*', 'menu.name as menuname')
-            ->orderBy('position')->get();
+            ->orderBy('position')->paginate(7);
         return view('admin.submenu.index',['submenu' => $submenu,'name' => $name,'id' => $id]);
     }
     public function add($id = null,$subid = null,Request $request)
